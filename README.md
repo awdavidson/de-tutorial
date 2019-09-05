@@ -2,7 +2,7 @@
 Data Engineering Tutorial
 
 # Branch: scala-master
-1. scala-master - scala project with example answers in scala
+1. scala-task - scala project with task to be completed in scala
 
 # Data
 1. US Nonemployer Statistcs 2014 - 2017
