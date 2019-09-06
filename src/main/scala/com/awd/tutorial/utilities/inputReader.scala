@@ -20,7 +20,7 @@ object inputReader extends SparkEnv {
     "escape" -> "\""
   )
 
-  // Task 1:
+  // Task 1: Add the functionality to readFile to create an optional column called “source_path” that has the raw path of the input data.
 
   def readFile(dataFilePath: String, fileProperties: Map[String, String] = properties): DataFrame = {
 
