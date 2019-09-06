@@ -20,9 +20,9 @@ object Main extends SparkEnv {
       "escape" -> "\""
     )
 
-    // Please execute task 1 and 2 in utilities.inputReader
+    // Please implement task 1 and 2 in utilities.inputReader
 
-    // Step 1:
+    // Step 1: Using the function created in task 2, read all NonEmployer Statistic files. The output should be in one DataFrame and include the “source_path” column.
 
     // Step 2: Rename columns “ST” and “CTY” to “STATE” and “COUNTY” respectively. Create a “YEAR” column by parsing the year from the file name (hint: regexp_extract may be useful)
 
