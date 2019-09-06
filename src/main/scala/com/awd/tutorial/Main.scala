@@ -44,9 +44,9 @@ object Main extends SparkEnv {
     // Step 4: Read US States Mapping Table
     val states = inputReader.readFile(s"${args(0)}/states.csv")
 
-    // Task 4:
+    // Task 4: Execute a broadcast join to join US States onto the unpivoted US Population Statistics data. What does this type of join do? When should it be used?
 
-    // Task 5:
+    // Task 5: Execute a standard join to join the output of task 4 onto the output of Step 1 (join key “STATE”, “COUNTY”, “YEAR”). Identify what type of join spark has executed through either the UI or physical plan (step.explain())
 
     // Task 6: Write Output to Parquet file partitioned by “STNAME” (path output/tutorial.parq)
 
