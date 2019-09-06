@@ -20,17 +20,17 @@ object Main extends SparkEnv {
       "escape" -> "\""
     )
 
-    // Read nonEmp data: raw_path = true as we want to pull the date from file name; rename ST and CTY
-    val nonEmp = inputReader.readMultipleCSV(s"${args(0)}", "nonemp", true)
-      .withColumn("YEAR", concat(lit(20), regexp_extract($"source_path", "([0-9]{2})", 1)))
-      .withColumnRenamed("ST", "STATE")
-      .withColumnRenamed("CTY", "COUNTY")
+    // Please execute task 1 and 2 in utilities.inputReader
 
-    // Read states this is a mapping from ID to State Name
-    val states = inputReader.readFile(s"${args(0)}/states.csv")
+    // Step 1:
 
+    // Step 2: Rename columns “ST” and “CTY” to “STATE” and “COUNTY” respectively. Create a “YEAR” column by parsing the year from the file name (hint: regexp_extract may be useful)
+
+    // Step 3: Read US Population Statistics data (hint: check delimiter)
+
+    // Task 3: Can either be created within Main or utilities.transform
     /**
-      * Read state population data and unpivot data e.g.
+      * Unpivot example:
       * Current:
       * STATE|POP_2018|POP_2017
       *     x|      20|      22
@@ -40,22 +40,15 @@ object Main extends SparkEnv {
       *     x|2018| 20
       *     x|2017| 22
       */
-    val pop = inputReader.readFile(s"${args(0)}/sub-est2018_all.csv", popProperties)
-    val unpivotPop = transform.unpivot(pop.drop("SUMLEV", "PLACE", "COUSUB", "CONCIT", "PRIMGEO_FLAG", "FUNCSTAT", "CENSUS2010POP", "ESTIMATESBASE2010"), Seq("STATE", "COUNTY", "NAME")).persist()
 
-    // Enrich population table with state names, extract year from unpivoted key and rename value to population
-    val enrichPop = unpivotPop.join(broadcast(states), Seq("STATE"), "left_outer")
-      .withColumn("YEAR", regexp_extract($"key", "([0-9]{4})", 1))
-      .withColumnRenamed("val", "POPULATION")
+    // Step 4: Read US States Mapping Table
+    val states = inputReader.readFile(s"${args(0)}/states.csv")
 
-    // Enrich nonEmp data with state populations
-    val outputDF = nonEmp.join(enrichPop, Seq("STATE", "COUNTY", "YEAR"), "left_outer")
+    // Task 4:
 
-    // Store to parquet partitioned by state
-    outputDF.write
-      .mode("Overwrite")
-      .partitionBy("STATE")
-      .parquet("output/data.parq")
+    // Task 5:
+
+    // Task 6: Write Output to Parquet file partitioned by “STNAME” (path output/tutorial.parq)
 
 
   }
