@@ -40,6 +40,6 @@ object inputReader extends SparkEnv {
 
   }
 
-  // Task 2:
+  // Task 2: Create a function to dynamically read multiple files of the same data. Your end result should be 1 DataFrame
 
 }
