@@ -28,7 +28,7 @@ object Main extends SparkEnv {
 
     // Step 3: Read US Population Statistics data (hint: check delimiter)
 
-    // Task 3: Can either be created within Main or utilities.transform
+    // Task 3: Create a function/implement logic to unpivot US Population Statistics data. Implementation can either be created within Main or utilities.transform
     /**
       * Unpivot example:
       * Current:
