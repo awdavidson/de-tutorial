@@ -17,9 +17,9 @@ Data Engineering Tutorial
 5. Write output to parquet partitioned by state
 
 # Task Example Answers
-1. Add input path - com.awd.tutorial.utilities.inputReader (line 38)
-2. Function to dynamically read multiple inputs and union into one DataFrame - com.awd.tutorial.utilities.inputReader (line 42)
-3. Function to dynamically unpivot US population statistics - com.awd.tutorial.utilities.transform (line 12)
-4. Broadcast Join state mapping onto US population statistics - com.awd.tutorial.Main (line 47)
-5. Join output of task 3 onto Nonemployer statistcs - com.awd.tutorial.Main (line 52)
-6. Write output to parquet partitioned by state name - come.awd.tutorial.Main (line 55)
+1. Add input path - readFile In[5]
+2. Function to dynamically read multiple inputs and union into one DataFrame - readMultipleCSV In[9]
+3. Function to dynamically unpivot US population statistics - unpivot In[13]
+4. Broadcast Join state mapping onto US population statistics - In[17]
+5. Join output of task 3 onto Nonemployer statistcs - In[18]
+6. Write output to parquet partitioned by state name - In[19]
