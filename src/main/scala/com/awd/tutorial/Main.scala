@@ -22,7 +22,7 @@ object Main extends SparkEnv {
 
     // Read nonEmp data: raw_path = true as we want to pull the date from file name; rename ST and CTY
     val nonEmp = inputReader.readMultipleCSV(s"${args(0)}", "nonemp", true)
-      .withColumn("YEAR", concat(lit(20), regexp_extract($"source_path", "([0-9]{2})", 1)))
+      .withColumn("YEAR", regexp_extract($"source_path", "([0-9]{4})", 1))
       .withColumnRenamed("ST", "STATE")
       .withColumnRenamed("CTY", "COUNTY")
 
@@ -41,12 +41,11 @@ object Main extends SparkEnv {
       *     x|2017| 22
       */
     val pop = inputReader.readFile(s"${args(0)}/sub-est2018_all.csv", popProperties)
-    val unpivotPop = transform.unpivot(pop.drop("SUMLEV", "PLACE", "COUSUB", "CONCIT", "PRIMGEO_FLAG", "FUNCSTAT", "CENSUS2010POP", "ESTIMATESBASE2010"), Seq("STATE", "COUNTY", "NAME")).persist()
+    val unpivotPop = transform.unpivot(pop.drop("SUMLEV", "PLACE", "COUSUB", "CONCIT", "PRIMGEO_FLAG", "FUNCSTAT", "CENSUS2010POP", "ESTIMATESBASE2010"), Seq("STATE", "COUNTY", "NAME"), "YEAR", "POPULATION").persist()
 
     // Enrich population table with state names, extract year from unpivoted key and rename value to population
     val enrichPop = unpivotPop.join(broadcast(states), Seq("STATE"), "left_outer")
-      .withColumn("YEAR", regexp_extract($"key", "([0-9]{4})", 1))
-      .withColumnRenamed("val", "POPULATION")
+      .withColumn("YEAR", regexp_extract($"YEAR", "([0-9]{4})", 1))
 
     // Enrich nonEmp data with state populations
     val outputDF = nonEmp.join(enrichPop, Seq("STATE", "COUNTY", "YEAR"), "left_outer")
