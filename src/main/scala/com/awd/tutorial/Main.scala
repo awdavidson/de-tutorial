@@ -53,7 +53,7 @@ object Main extends SparkEnv {
     // Store to parquet partitioned by state
     outputDF.write
       .mode("Overwrite")
-      .partitionBy("STATE")
+      .partitionBy("STNAME")
       .parquet("output/data.parq")
 
 
