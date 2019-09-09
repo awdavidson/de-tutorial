@@ -1,7 +1,7 @@
 # de-tutorial
 Data Engineering Tutorial
 
-# Branch: scala-master
+# Branch: scala-task
 1. scala-task - scala project with task to be completed in scala
 
 # Data
