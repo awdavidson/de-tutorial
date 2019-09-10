@@ -16,10 +16,10 @@ Data Engineering Tutorial
 4. Join output of step 3 into Nonemployer Statistics
 5. Write output to parquet partitioned by state
 
-# Task Example Answers
-1. Add input path - com.awd.tutorial.utilities.inputReader (line 38)
-2. Function to dynamically read multiple inputs and union into one DataFrame - com.awd.tutorial.utilities.inputReader (line 42)
-3. Function to dynamically unpivot US population statistics - com.awd.tutorial.utilities.transform (line 12)
-4. Broadcast Join state mapping onto US population statistics - com.awd.tutorial.Main (line 47)
-5. Join output of task 3 onto Nonemployer statistcs - com.awd.tutorial.Main (line 52)
-6. Write output to parquet partitioned by state name - come.awd.tutorial.Main (line 55)
+# Task - Please see questions.txt
+1. Add input path - com.awd.tutorial.utilities.inputReader
+2. Function to dynamically read multiple inputs and union into one DataFrame - com.awd.tutorial.utilities.inputReader
+3. Function to dynamically unpivot US population statistics - com.awd.tutorial.utilities.transform
+4. Broadcast Join state mapping onto US population statistics - com.awd.tutorial.Main
+5. Join output of task 3 onto Nonemployer statistcs - com.awd.tutorial.Main
+6. Write output to parquet partitioned by state name - come.awd.tutorial.Main
