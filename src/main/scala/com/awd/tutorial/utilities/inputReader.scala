@@ -55,7 +55,7 @@ object inputReader extends SparkEnv {
     val sourceDF = inputs.collect {
       case path: String =>
         inputDF = readFile(path, properties, raw_path)
-        if (intersect_columns.length > 0) intersect_columns = intersect_columns.intersect(inputDF.columns) else intersect_columns = inputDF.columns
+        if (intersect_columns.length > 1) intersect_columns = intersect_columns.intersect(inputDF.columns) else intersect_columns = inputDF.columns
         inputDF
     }
     sourceDF.reduce((x, y) => x.select(intersect_columns.head, intersect_columns.tail: _*) union (y.select(intersect_columns.head, intersect_columns.tail: _*)))
