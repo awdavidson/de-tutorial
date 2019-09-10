@@ -1,8 +1,8 @@
 # de-tutorial
 Data Engineering Tutorial
 
-# Branch: pyspark-master
-1. pyspark-master - python notebook with task to be completed in pyspark
+# Branch: pyspark-task
+1. pyspark-task - python notebook with task to be completed in pyspark
 
 # Data
 1. US Nonemployer Statistcs 2014 - 2017
@@ -16,10 +16,10 @@ Data Engineering Tutorial
 4. Join output of step 3 into Nonemployer Statistics
 5. Write output to parquet partitioned by state
 
-# Task Example Answers
-1. Add input path - readFile In[5]
-2. Function to dynamically read multiple inputs and union into one DataFrame - readMultipleCSV In[9]
-3. Function to dynamically unpivot US population statistics - unpivot In[13]
-4. Broadcast Join state mapping onto US population statistics - In[17]
-5. Join output of task 3 onto Nonemployer statistcs - In[18]
-6. Write output to parquet partitioned by state name - In[19]
+# Tasks - Please see questions.txt
+1. Add input path
+2. Function to dynamically read multiple inputs and union into one DataFrame
+3. Function to dynamically unpivot US population statistics
+4. Broadcast Join state mapping onto US population statistics
+5. Join output of task 3 onto Nonemployer statistcs
+6. Write output to parquet partitioned by state name
