@@ -11,7 +11,7 @@ Data Engineering Tutorial
 
 # Process
 1. Load multiple Nonemployer Statistics and extract year from input path
-2. Load and unpivot population statistics
+2. Load, unpivot and groupBy population statistics
 3. Load and join state mapping to population statistics
 4. Join output of step 3 into Nonemployer Statistics
 5. Write output to parquet partitioned by state
