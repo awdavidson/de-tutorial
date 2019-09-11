@@ -1,0 +1,31 @@
+The Big Data Lab's projects, tend to require multiple data feeds over various dates. During the processing for entity resolution, the raw file path is added to each data feed. This is done to include information such as ‘system name’, ‘table name’ and ‘snapshot date’ to the raw data.
+ 
+Task 1: In the readFile function, include functionality to create a column called "source_path" that contains the raw file path (make this field optional). 
+ 
+Unfortunately, a separate team controls the ingestion process. Therefore, the way data is stored is not always consistent; does not always follow best practice; and does not adhere to optimised storage architecture for Hadoop. For example, the current process creates a new database every time a source is ingested and updated. We therefore have multiple databases, across different days, for the same data. Although this issue has been highlighted and is currently being addressed, we have to come up with ways to dynamically read multiple files of the same data. This is because there are deadlines that need to be met and delivery is key.
+ 
+Task 2: Create a function that dynamically reads multiple files of the same data. Your end results will be 1 DataFrame.
+ 
+Step 1: Read all Non-Employer statistic files and collect all data into 1 DataFrame. Ensure "source_path" is created.
+ 
+Step 2: Create a "YEAR" column by parsing the year from the file name. Rename columns "ST" and "CTY" to "STATE" and "COUNTY" respectively. 
+ 
+Some processes require pivoting or unpivoting data, to structure the data for a following transformation step, or to meet requirements for a downstream process/application.
+ 
+Step 3: Read US Population Statistics data feed
+ 
+Task 3: Unpivot the US Population Statistics data feed so each row corresponds to a population for a year per state and county
+ 
+All the data is in different shapes and sizes; some span billions of rows whilst others are merely hundreds. Modelling and linking data together is critical for our success. However, data and join key skew is a common battle. Knowing what types of joins, how they are executed and how to efficiently join data sets is extremely important.
+ 
+Step 4: Read US States mapping table
+ 
+Task 4: Execute a broadcast join for US States to the output of Task 3.What does this join do? When should it be used?
+ 
+Task 5: Execute a normal join for the output of Task 4 to the output of Step 2 (join key "STATE", "COUNTY", "YEAR"). Identify the type of join spark has executed (either through sparkUI or physical plan)
+ 
+Bonus Task:  When a broadcast join is not feasible, how can we adapt our data to optimise our join and reduce our skew.
+ 
+Finally, storing output in an organised and optimised way is important for our consumers. Understanding how this data will be consumed will help and may impact how it is stored.
+ 
+Task 6: Write the output of task 5 to a parquet file partitioned by state ("STNAME")
