@@ -18,7 +18,6 @@ Task 3: Unpivot the US Population Statistics data feed so each row corresponds t
 
 Step 4: Population is currently broken down to a Town level, we want to aggregate this to a County level. To achieve this we need to group by STATE, COUNTY and YEAR and take the sum of populations.
  
- 
 All the data is in different shapes and sizes; some span billions of rows whilst others are merely hundreds. Modelling and linking data together is critical for our success. However, data and join key skew is a common battle. Knowing what types of joins, how they are executed and how to efficiently join data sets is extremely important.
  
 Step 5: Read US States mapping table
